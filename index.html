@@ -2,34 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Chat Me Aura </title>
+  <title>Mobile Fullscreen View</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
-      background: #f0f0f0;
     }
-    .mobile-frame {
-      width: 375px;   /* Typical iPhone width */
-      height: 667px;  /* Typical iPhone height */
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    }
+
     iframe {
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       border: none;
+      transform: scale(0.5); /* Simulates mobile width */
+      transform-origin: top left;
+      pointer-events: auto;
+    }
+
+    @media (max-width: 480px) {
+      iframe {
+        transform: scale(1); /* On real mobile, show normally */
+      }
     }
   </style>
 </head>
 <body>
-  <div class="mobile-frame">
-    <iframe src="https://chat-me-aura.vercel.app/" allow="fullscreen"></iframe>
-  </div>
+  <iframe src="https://chat-me-aura.vercel.app/" allowfullscreen></iframe>
 </body>
 </html>
